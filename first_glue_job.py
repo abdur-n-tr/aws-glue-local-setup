@@ -1,9 +1,11 @@
 import sys
+import os
 from awsglue.transforms import *
 from awsglue.utils import getResolvedOptions
 from pyspark.context import SparkContext
 from awsglue.context import GlueContext
 from awsglue.job import Job
+from constants import Constants
 
 sc = SparkContext()
 glueContext = GlueContext(sc)
@@ -40,10 +42,10 @@ location_redshift_df = glueContext.write_dynamic_frame.from_options(
     connection_options = {
         "url": "jdbc:redshift://my-redshift-cluster.cezy0qn980ta.us-east-1.redshift.amazonaws.com:5439/dev",
         "dbtable": "public.location_dim",
-        "user": "awsuser",
-        "password": "Temp1234",
+        "user": Constants.REDSHIFT_DB_USER,
+        "password": Constants.REDSHIFT_DB_PASSWORD,
         "redshiftTmpDir": "s3://smartcity-queries/temp/",
-        "aws_iam_role": "arn:aws:iam::471112663332:role/role-s3-to-redshift-vice-versa",
+        "aws_iam_role": Constants.REDSHIFT_CLUSTER_ROLE,
         "preactions": "CREATE TABLE IF NOT EXISTS public.location_dim (location_id SMALLINT, borough VARCHAR(20), zone VARCHAR(50), service_zone VARCHAR(15));",
     },
     transformation_ctx="location_redshift_df",
