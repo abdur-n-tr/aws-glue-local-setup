@@ -1,0 +1,28 @@
+{
+   "firstName":"Nitin",
+   "lastName":"Shah",
+   "jobs":[
+      {
+         "title":"software engineer",
+         "company":"Apple"
+      },
+      {
+         "title":"Full stack  engineer",
+         "company":"Google"
+      }
+   ]
+},
+{
+   "firstName":"John",
+   "lastName":"Doe",
+   "jobs":[
+      {
+         "title":"Data Scientist",
+         "company":"Amazon"
+      },
+      {
+         "title":"Machine Learning Engineer",
+         "company":"Microsoft"
+      }
+   ]
+}
